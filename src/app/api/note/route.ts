@@ -21,7 +21,6 @@ export const POST = async (req: NextRequest) => {
                 content,
             },
         });
-        console.log(note)
         return NextResponse.json({note});
     } catch (error) {
         return NextResponse.error();
@@ -30,6 +29,7 @@ export const POST = async (req: NextRequest) => {
 };
 
 // Action to delete
+// note?id=100&name=sohag
 export const DELETE = async (req: NextRequest) => {
     const url = new URL(req.url).searchParams;
     const id = Number(url.get("id")) || 0;
@@ -57,18 +57,15 @@ export const DELETE = async (req: NextRequest) => {
 // Action to update or edit
 export const PUT = async (req: NextRequest) => {
     const {title, content, id} = await req.json();
-
     const note = await prisma.note.update({
         where: {
             id: Number(id),
         },
-
         data: {
             title,
             content,
         },
     });
-
     return NextResponse.json({
         note,
     });

@@ -1,9 +1,9 @@
 "use client"
 
-import { useRouter } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
+import {useRouter} from 'next/navigation'
+import React, {useEffect, useState} from 'react'
 
-const Page = ({ params }: { params: { id: string } }) => {
+const Page = ({params}: { params: { id: string } }) => {
 
     // The update page will need an id in a url
     const id = params.id
@@ -56,8 +56,10 @@ const Page = ({ params }: { params: { id: string } }) => {
 
     return (
         <form className='w-[500px] mx-auto pt-20 flex flex-col gap-2' onSubmit={handleSubmit}>
-            <input type="text" placeholder='Input your title' value={title} onChange={(e) => setTitle(e.target.value)} className='w-full border p-2 rounded-md' />
-            <textarea rows={10} placeholder='Input your content' value={content} onChange={(e) => setContent(e.target.value)} className='w-full border p-2 rounded-md' />
+            <input type="text" placeholder='Input your title' value={title} onChange={(e) => setTitle(e.target.value)}
+                   className='w-full border p-2 rounded-md'/>
+            <textarea rows={10} placeholder='Input your content' value={content}
+                      onChange={(e) => setContent(e.target.value)} className='w-full border p-2 rounded-md'/>
             <button disabled={isLoading}>{isLoading ? 'Loading ...' : 'Update'}</button>
         </form>
     )
